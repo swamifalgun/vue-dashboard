@@ -1,56 +1,35 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
     <v-main>
-      <HelloWorld/>
+      <v-container class="dashboard">
+          <div>
+            <div class="transport">
+              <BusChart />
+            </div>
+            <div class="electricity">
+              <h1>Electricity</h1>
+            </div>
+          </div>
+          <div class="weather">
+            <h1>Weather</h1>
+          </div>
+      </v-container>
+      
+      <HelloWorld />
     </v-main>
   </v-app>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld';
+import BusChart from './components/BusChart';
 
 export default {
   name: 'App',
 
   components: {
     HelloWorld,
+    BusChart
   },
 
   data: () => ({
@@ -58,3 +37,30 @@ export default {
   }),
 };
 </script>
+
+<style scoped lang="scss">
+  .dasboard {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+  }
+
+  .transport {
+    width: 500px;
+    height: 200px;
+    border: 1px solid red;
+  }
+
+  .electricity {
+    border: 1px solid green;
+    width: 500px;
+    height: 200px;
+  }
+
+  .weather {
+    align-items: baseline;
+    width: 200px;
+    height: 200px;
+    border: 1px solid blue;
+  }
+</style>
